@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        ".idea": true,
+        "**/node_modules": true,
+        "**/*.js": false,
+        "**/*.map": false,
+        ".svelte-kit": true,
+        ".vercel_build_output": true,
+        ".vscode": true
+    }
+}
