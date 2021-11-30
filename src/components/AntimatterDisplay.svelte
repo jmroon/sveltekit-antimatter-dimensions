@@ -3,5 +3,5 @@
 </script>
 
 <div class="mx-auto text-center m-10 text-4xl">
-  {$antimatter.toFixed(0)}
+  Antimatter: {$antimatter.toFixed(0)}
 </div>

@@ -11,7 +11,7 @@ export const dimensions = writable<Dimension[]>([
   {
     dimensionNumber: 1,
     displayName: '1st Dimension',
-    baseCost: 10 ** 1, 
+    baseCost: 10 ** 1,
     owned: 0,
   },
   {

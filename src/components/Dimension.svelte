@@ -1,5 +1,7 @@
 <script lang="ts">
   import { dimensions } from '../stores/dimension';
+  import { antimatter } from '../stores/antimatter';
+
   export let n: number;
 
   const buyOne = () => {
@@ -10,13 +12,42 @@
     $dimensions[n].owned = buyUntilCount;
   };
 
-  $: buyUntilCount = $dimensions[n].owned + 10 - ($dimensions[n].owned % 10);
+  $: buyUntilCount = Math.floor($dimensions[n].owned) + 10 - (Math.floor($dimensions[n].owned) % 10);
   $: buyUntilCost = buyUntilCount * $dimensions[n].baseCost;
+
+  let lastTime = performance.now();
+
+  const gameLoop =
+    n == 0
+      ? () => {
+          const currentTime = performance.now();
+          const delta = (currentTime - lastTime) / 1000;
+
+          // increment Antimatter
+          const added = Math.floor($dimensions[n].owned) * delta;
+          $antimatter += added;
+
+          lastTime = currentTime;
+          requestAnimationFrame(gameLoop);
+        }
+      : () => {
+          const currentTime = performance.now();
+          const delta = (currentTime - lastTime) / 1000;
+
+          // increment previous Dimensions
+          const added = Math.floor($dimensions[n].owned) * delta;
+          $dimensions[n - 1].owned += added;
+
+          lastTime = currentTime;
+          requestAnimationFrame(gameLoop);
+        };
+
+  gameLoop();
 </script>
 
 <div class="flex justify-between py-2">
   <div class="w-[192px] mx-1 font-semibold whitespace-nowrap">{$dimensions[n].displayName}</div>
-  <div class="flex-grow w-1/4 text-center mr-10 self-center">{$dimensions[n].owned}</div>
+  <div class="flex-grow w-1/4 text-center mr-10 self-center">{$dimensions[n].owned.toFixed(0)}</div>
   <button class="w-1/4 max-w-[128px] rounded-md bg-yellow-100 p-2 mx-1 font-semibold" on:click={buyOne}
     >Cost: {$dimensions[n].baseCost}</button
   >
