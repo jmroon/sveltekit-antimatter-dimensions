@@ -1,12 +1,17 @@
 <script lang="ts">
-  import { dimensions } from '@/stores/dimension';
-  import { antimatter } from '@/stores/antimatter';
-
   import '@/app.css';
 
-  let lastTime = performance.now();
+  import { dimensions } from '@/stores/dimension';
+  import { antimatter } from '@/stores/antimatter';
+  import { prefetchRoutes } from '$app/navigation';
 
-  function gameLoop() {
+  const load = async () => {
+    await prefetchRoutes();
+    gameLoop();
+  };
+
+  let lastTime = performance.now();
+  const gameLoop = () => {
     const currentTime = performance.now();
     const delta = (currentTime - lastTime) / 1000;
 
@@ -18,9 +23,9 @@
     lastTime = currentTime;
 
     requestAnimationFrame(gameLoop);
-  }
+  };
 
-  gameLoop();
+  load();
 </script>
 
 <nav class="p-5 space-x-10 text-center bg-gray-600 text-white text-xl">
