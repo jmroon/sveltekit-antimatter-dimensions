@@ -4,10 +4,13 @@
   import { dimensions } from '@/stores/dimension';
   import { antimatter } from '@/stores/antimatter';
   import { prefetchRoutes } from '$app/navigation';
+  import { browser } from '$app/env';
 
-  const load = async () => {
-    await prefetchRoutes();
-    gameLoop();
+  const loadRoutes = async () => {
+    if (browser) {
+      await prefetchRoutes();
+      gameLoop();
+    }
   };
 
   let lastTime = performance.now();
@@ -25,7 +28,7 @@
     requestAnimationFrame(gameLoop);
   };
 
-  load();
+  loadRoutes();
 </script>
 
 <nav class="p-5 space-x-10 text-center bg-gray-600 text-white text-xl">
