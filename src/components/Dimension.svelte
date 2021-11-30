@@ -9,10 +9,10 @@
   };
 
   const buyUntil = () => {
-    $dimensions[n].owned = buyUntilCount;
+    $dimensions[n].owned += buyUntilCount;
   };
 
-  $: buyUntilCount = Math.floor($dimensions[n].owned) + 10 - (Math.floor($dimensions[n].owned) % 10);
+  $: buyUntilCount = 10 - (Math.floor($dimensions[n].owned) % 10);
   $: buyUntilCost = buyUntilCount * $dimensions[n].baseCost;
 
   let lastTime = performance.now();
