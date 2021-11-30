@@ -30,17 +30,7 @@
           lastTime = currentTime;
           requestAnimationFrame(gameLoop);
         }
-      : () => {
-          const currentTime = performance.now();
-          const delta = (currentTime - lastTime) / 1000;
-
-          // increment previous Dimensions
-          const added = Math.floor($dimensions[n].owned) * delta;
-          $dimensions[n - 1].owned += added;
-
-          lastTime = currentTime;
-          requestAnimationFrame(gameLoop);
-        };
+      : () => {};
 
   gameLoop();
 </script>
