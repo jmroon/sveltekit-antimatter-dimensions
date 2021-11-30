@@ -20,12 +20,18 @@
   const gameLoop =
     n == 0
       ? () => {
-          console.log(' do something ');
-          requestAnimationFrame(gameLoop);
+          const currentTime = performance.now();
+          const delta = (currentTime - lastTime) / 1000;
+
+          // increment Antimatter
+          const added = Math.floor($dimensions[n].owned) * delta;
+          $antimatter += added;
+
+          lastTime = currentTime;
         }
       : () => {};
 
-  gameLoop();
+  setInterval(gameLoop, 16);
 </script>
 
 <div class="flex justify-between py-2">
