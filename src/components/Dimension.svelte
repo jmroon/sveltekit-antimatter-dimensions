@@ -20,14 +20,7 @@
   const gameLoop =
     n == 0
       ? () => {
-          const currentTime = performance.now();
-          const delta = (currentTime - lastTime) / 1000;
-
-          // increment Antimatter
-          const added = Math.floor($dimensions[n].owned) * delta;
-          $antimatter += added;
-
-          lastTime = currentTime;
+          console.log(' do something ');
           requestAnimationFrame(gameLoop);
         }
       : () => {};
