@@ -3,9 +3,8 @@
 </script>
 
 <script lang="ts">
-  import AntimatterDisplay from '../components/AntimatterDisplay.svelte';
-
-  import DimensionTable from '../components/DimensionTable.svelte';
+  import AntimatterDisplay from '@/components/AntimatterDisplay.svelte';
+  import DimensionTable from '@/components/DimensionTable.svelte';
 </script>
 
 <AntimatterDisplay />

@@ -24,7 +24,6 @@
     "checkJs": true,
     "strict": true,
     "paths": {
-      "@": ["src"],
       "@/*": ["src/*"]
     }
   },
