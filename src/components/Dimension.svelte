@@ -18,13 +18,14 @@
 </script>
 
 {#if $dimensions[n].unlocked}
-  <div class="flex justify-between py-2">
-    <div class="w-[192px] mx-1 font-semibold whitespace-nowrap">{$dimensions[n].displayName}</div>
-    <div class="flex-grow w-1/4 text-center mr-10 self-center">{Math.floor($dimensions[n].owned)}</div>
-    <button
-      class="w-1/4 max-w-[128px] rounded-md bg-yellow-100 p-2 mx-1 font-semibold disabled:bg-gray-100 disabled:text-gray-400"
-      on:click={buyOne}
-      disabled={!canAfford}>Cost: {$dimensions[n].cost}</button
+  <div class="flex justify-around py-2 items-center">
+    <div class="font-semibold whitespace-nowrap">{$dimensions[n].displayName}</div>
+    <div class="ml-5">{Math.floor($dimensions[n].owned)}</div>
+    <button class="btn btn-primary w-[30] ml-5" on:click={buyOne} disabled={!canAfford}
+      >Cost: {$dimensions[n].cost}</button
+    >
+    <button class="btn btn-primary w-[30] ml-5" on:click={buyOne} disabled={!canAfford}
+      >Cost: {$dimensions[n].cost}</button
     >
   </div>
 {/if}

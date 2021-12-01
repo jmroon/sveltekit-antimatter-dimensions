@@ -35,6 +35,6 @@
   <a href="/">Dimensions</a>
   <a href="/options">Options</a>
 </nav>
-<div class="container mx-auto">
+<div class="mx-auto p-10">
   <slot />
 </div>
