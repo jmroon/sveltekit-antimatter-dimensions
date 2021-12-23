@@ -2,6 +2,9 @@
   import { antimatter } from '@/stores/antimatter';
 </script>
 
-<div class="mx-auto text-center m-6 text-3xl font-semibold select-none">
-  Antimatter: {$antimatter.toFixed(0)}
+<div>
+  <div class="mx-auto text-3xl font-semibold text-center select-none">
+    {$antimatter.toFixed(0)}
+  </div>
+  <div class="mx-auto text-lg font-semibold text-center select-none">Antimatter</div>
 </div>

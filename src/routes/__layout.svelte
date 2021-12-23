@@ -5,6 +5,7 @@
   import { antimatter } from '@/stores/antimatter';
   import { prefetchRoutes } from '$app/navigation';
   import { browser } from '$app/env';
+  import AntimatterDisplay from '@/components/AntimatterDisplay.svelte';
 
   const loadRoutes = async () => {
     if (browser) {
@@ -32,10 +33,11 @@
   loadRoutes();
 </script>
 
-<nav class="p-5 space-x-10 text-center bg-gray-800 text-gray-100 text-xl drop-shadow-md">
+<nav class="p-5 text-center bg-slate-800 text-gray-100 text-xl drop-shadow-md flex items-center justify-between">
   <a href="/">Dimensions</a>
+  <AntimatterDisplay />
   <a href="/options">Options</a>
 </nav>
-<div class="mx-auto p-4">
+<div class="mx-auto p-4 h-max">
   <slot />
 </div>

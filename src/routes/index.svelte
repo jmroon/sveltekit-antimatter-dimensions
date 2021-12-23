@@ -7,7 +7,6 @@
   import DimensionTable from '@/components/DimensionTable.svelte';
 </script>
 
-<AntimatterDisplay />
 <div class="max-w-full">
   <DimensionTable />
 </div>
