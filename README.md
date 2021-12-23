@@ -14,7 +14,7 @@ npm init svelte@next
 npm init svelte@next my-app
 ```
 
-> Note: the `@next` is temporary
+> Note: the `@next` is temporary1
 
 ## Developing
 
