@@ -33,11 +33,11 @@
   loadRoutes();
 </script>
 
-<nav class="p-5 text-center bg-slate-800 text-gray-100 text-xl drop-shadow-md flex items-center justify-between">
+<nav class="flex items-center p-5 text-xl text-center text-gray-100 justify-evenly bg-slate-800 drop-shadow-md">
   <a href="/">Dimensions</a>
   <AntimatterDisplay />
   <a href="/options">Options</a>
 </nav>
-<div class="mx-auto p-4 h-max">
+<div class="p-4 mx-auto h-max">
   <slot />
 </div>

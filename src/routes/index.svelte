@@ -7,6 +7,8 @@
   import DimensionTable from '@/components/DimensionTable.svelte';
 </script>
 
-<div class="max-w-full">
-  <DimensionTable />
+<div class="flex justify-center max-w-full">
+  <div class="max-w-6xl">
+    <DimensionTable />
+  </div>
 </div>
