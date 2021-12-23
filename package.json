@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
-    "daisyui": "^1.16.2"
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "svelte-fa": "^2.4.0"
   }
 }

@@ -14,27 +14,28 @@
   };
 
   let lastTime = performance.now();
-  const gameLoop = () => {
+
+  function gameLoop() {
     const currentTime = performance.now();
     const delta = (currentTime - lastTime) / 1000;
 
     $dimensions.forEach((d, i) => {
-      const added = Math.floor($dimensions[i].owned) * delta;
+      const added = Math.floor($dimensions[i].owned) * $dimensions[i].multi * delta;
       i == 0 ? ($antimatter += added) : ($dimensions[i - 1].owned += added);
     });
 
     lastTime = currentTime;
 
     requestAnimationFrame(gameLoop);
-  };
+  }
 
   loadRoutes();
 </script>
 
-<nav class="p-5 space-x-10 text-center bg-gray-600 text-white text-xl">
+<nav class="p-5 space-x-10 text-center bg-gray-800 text-gray-100 text-xl drop-shadow-md">
   <a href="/">Dimensions</a>
   <a href="/options">Options</a>
 </nav>
-<div class="mx-auto p-10">
+<div class="mx-auto p-4">
   <slot />
 </div>

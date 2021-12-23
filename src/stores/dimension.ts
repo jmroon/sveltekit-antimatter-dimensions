@@ -6,6 +6,7 @@ export interface Dimension {
   cost: number;
   owned: number;
   unlocked: boolean;
+  multi: number;
 }
 
 export const dimensions = writable<Dimension[]>([
@@ -15,6 +16,7 @@ export const dimensions = writable<Dimension[]>([
     cost: 10 ** 1,
     owned: 0,
     unlocked: true,
+    multi: 1,
   },
   {
     dimensionNumber: 2,
@@ -22,6 +24,7 @@ export const dimensions = writable<Dimension[]>([
     cost: 10 ** 2,
     owned: 0,
     unlocked: false,
+    multi: 1,
   },
   {
     dimensionNumber: 3,
@@ -29,6 +32,7 @@ export const dimensions = writable<Dimension[]>([
     cost: 10 ** 3,
     owned: 0,
     unlocked: false,
+    multi: 1,
   },
   {
     dimensionNumber: 4,
@@ -36,5 +40,6 @@ export const dimensions = writable<Dimension[]>([
     cost: 10 ** 4,
     owned: 0,
     unlocked: false,
+    multi: 1,
   },
 ]);

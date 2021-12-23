@@ -3,6 +3,10 @@
   import Dimension from '@/components/Dimension.svelte';
 </script>
 
-{#each $dimensions as dimension, n}
-  <Dimension {n} />
-{/each}
+<div class="flex max-w-full mx-auto flex-wrap">
+  {#each $dimensions.filter((d) => d.unlocked) as dimension, n}
+    <div class="flex-grow m-5">
+      <Dimension {n} />
+    </div>
+  {/each}
+</div>

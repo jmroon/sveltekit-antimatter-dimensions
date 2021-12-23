@@ -8,4 +8,6 @@
 </script>
 
 <AntimatterDisplay />
-<DimensionTable />
+<div class="max-w-full">
+  <DimensionTable />
+</div>
