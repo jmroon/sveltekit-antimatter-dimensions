@@ -1,5 +1,6 @@
 import { derived, writable } from 'svelte/store';
 import type { Readable } from 'svelte/store';
+import { buyDimensions, canAfford, progress, untilCount } from '@/game/dimension';
 
 export interface GameState {
   antimatter: number;
@@ -40,46 +41,12 @@ export const antimatter = derived(gameState, ($state) => $state.antimatter);
 export function useDimension(n: number): DimensionStore {
   return {
     dimension: derived(gameState, ($state) => $state.dimensions[n]),
-    canAfford: derived(gameState, ($state) => $state.antimatter >= $state.dimensions[n].cost),
-    canAffordUntil: derived(
-      gameState,
-      ($state) => $state.antimatter >= $state.dimensions[n].cost * (10 - ($state.dimensions[n].owned % 10))
-    ),
-    progress: derived(gameState, ($state) => {
-      const progress = $state.antimatter / $state.dimensions[n].cost;
-      if (progress >= 1) {
-        return '100%';
-      } else {
-        return `${progress * 100}%`;
-      }
-    }),
-    progressUntil: derived(gameState, ($state) => {
-      const progress = $state.antimatter / ($state.dimensions[n].cost * (10 - ($state.dimensions[n].owned % 10)));
-      if (progress >= 1) {
-        return '100%';
-      } else {
-        return `${progress * 100}%`;
-      }
-    }),
-    untilCount: derived(gameState, ($state) => 10 - ($state.dimensions[n].owned % 10)),
-    buy() {
-      gameState.update(($state) => buyDimensions($state, n, 1));
-    },
-    buyUntil() {
-      gameState.update(($state) => buyDimensions($state, n, 10 - ($state.dimensions[n].owned % 10)));
-    },
+    canAfford: derived(gameState, ($state) => canAfford($state, n, false)),
+    canAffordUntil: derived(gameState, ($state) => canAfford($state, n, true)),
+    progress: derived(gameState, ($state) => progress($state, n, false)),
+    progressUntil: derived(gameState, ($state) => progress($state, n, true)),
+    untilCount: derived(gameState, ($state) => untilCount($state, n)),
+    buy: () => gameState.update(($state) => buyDimensions($state, n, false)),
+    buyUntil: () => gameState.update(($state) => buyDimensions($state, n, true)),
   };
-}
-
-function buyDimensions($state: GameState, n: number, count: number): GameState {
-  if ($state.antimatter >= $state.dimensions[n].cost * count) {
-    $state.dimensions[n].owned += count;
-    $state.antimatter -= $state.dimensions[n].cost;
-    if ($state.dimensions[n].owned >= 10) {
-      $state.dimensions[n + 1].unlocked = true;
-      $state.dimensions[n].cost *= 100;
-      $state.dimensions[n].multi *= 2;
-    }
-  }
-  return $state;
 }
