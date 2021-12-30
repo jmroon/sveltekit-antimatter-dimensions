@@ -1,8 +1,7 @@
 <script lang="ts">
   import '@/app.css';
 
-  import { dimensions } from '@/stores/dimension';
-  import { antimatter } from '@/stores/antimatter';
+  import { gameState } from '@/stores/gameState';
   import { prefetchRoutes } from '$app/navigation';
   import { browser } from '$app/env';
   import AntimatterDisplay from '@/components/AntimatterDisplay.svelte';
@@ -20,9 +19,12 @@
     const currentTime = performance.now();
     const delta = (currentTime - lastTime) / 1000;
 
-    $dimensions.forEach((d, i) => {
-      const added = Math.floor($dimensions[i].owned) * $dimensions[i].multi * delta;
-      i == 0 ? ($antimatter += added) : ($dimensions[i - 1].owned += added);
+    gameState.update(($state) => {
+      $state.dimensions.forEach((d, i) => {
+        const amountToAdd = Math.floor($state.dimensions[i].owned) * $state.dimensions[i].multi * delta;
+        i == 0 ? ($state.antimatter += amountToAdd) : ($state.dimensions[i - 1].owned += amountToAdd);
+      });
+      return $state;
     });
 
     lastTime = currentTime;
