@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { antimatter } from '@/stores/antimatter';
+  import { antimatter } from '@/stores/gameState';
 </script>
 
 <div>
