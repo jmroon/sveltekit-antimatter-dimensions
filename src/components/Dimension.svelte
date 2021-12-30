@@ -33,7 +33,9 @@
   };
 </script>
 
-<div class="flex flex-row w-[400px] font-bold text-gray-100 shadow-lg select-none rounded-xl bg-slate-800">
+<div
+  class="flex flex-row w-[400px] font-bold text-gray-100 shadow-slate-300 shadow-lg select-none rounded-xl bg-slate-800"
+>
   <div class="flex flex-col flex-grow">
     <!-- Header -->
     <div class="flex items-center justify-between pt-4 pl-4 space-x-3">
@@ -56,12 +58,15 @@
       class="flex flex-col justify-end w-full h-full group hover:text-gray-100 hover:cursor-pointer notouch"
       on:click={() => buy(1)}
     >
-      <span class="absolute self-center pb-3 {!canAfford(1) ? 'text-gray-400' : ''}">+1</span>
+      <span class="fixed self-center pb-3 {!canAfford(1) ? 'text-gray-400' : ''}">+1</span>
       <div class="w-12 align-bottom group-hover:bg-slate-500 bg-slate-600" style="height: {progress(1)}" />
     </div>
     <!-- Buy Until -->
-    <div class="flex flex-col justify-end w-full h-full group hover:text-gray-100 hover:cursor-pointer notouch">
-      <span class="absolute self-center pb-3 {!canAfford(10) ? 'text-gray-400' : ''}">+10</span>
+    <div
+      class="flex flex-col justify-end w-full h-full group hover:text-gray-100 hover:cursor-pointer notouch"
+      on:click={() => buy(10)}
+    >
+      <span class="fixed self-center pb-3 {!canAfford(10) ? 'text-gray-400' : ''}">+10</span>
       <div class="w-12 align-bottom group-hover:bg-slate-500 bg-slate-600" style="height: {progress(10)}" />
     </div>
   </div>
