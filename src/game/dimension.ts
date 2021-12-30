@@ -1,5 +1,14 @@
 import type { GameState } from '@/stores/gameState';
 
+export interface Dimension {
+  dimensionNumber: number;
+  displayName: string;
+  cost: number;
+  owned: number;
+  unlocked: boolean;
+  multi: number;
+}
+
 export function buyDimensions(state: GameState, n: number, until: boolean): GameState {
   const count = until ? untilCount(state, n) : 1;
   if (state.antimatter >= state.dimensions[n].cost * count) {

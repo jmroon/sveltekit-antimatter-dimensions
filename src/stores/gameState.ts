@@ -1,31 +1,12 @@
 import { derived, writable } from 'svelte/store';
-import type { Readable } from 'svelte/store';
 import { buyDimensions, canAfford, progress, untilCount } from '@/game/dimension';
+
+import type { Dimension } from '@/game/dimension';
 
 export interface GameState {
   antimatter: number;
   dimensions: Dimension[];
 }
-export interface Dimension {
-  dimensionNumber: number;
-  displayName: string;
-  cost: number;
-  owned: number;
-  unlocked: boolean;
-  multi: number;
-}
-
-export interface DimensionStore {
-  dimension: Readable<Dimension>;
-  canAfford: Readable<boolean>;
-  canAffordUntil: Readable<boolean>;
-  progress: Readable<string>;
-  progressUntil: Readable<string>;
-  untilCount: Readable<number>;
-  buy: () => void;
-  buyUntil: () => void;
-}
-
 export const gameState = writable<GameState>({
   antimatter: 10,
   dimensions: [
@@ -38,7 +19,7 @@ export const gameState = writable<GameState>({
 
 export const antimatter = derived(gameState, ($state) => $state.antimatter);
 
-export function useDimension(n: number): DimensionStore {
+export function useDimension(n: number) {
   return {
     dimension: derived(gameState, ($state) => $state.dimensions[n]),
     canAfford: derived(gameState, ($state) => canAfford($state, n, false)),
