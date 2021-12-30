@@ -5,8 +5,6 @@
 
   export let n: number;
   let { dimension, canAfford, canAffordUntil, progress, progressUntil, untilCount, buy, buyUntil } = useDimension(n);
-
-  $: console.log('Log from Dimension ' + n + ': ' + $untilCount);
 </script>
 
 <div

@@ -63,33 +63,23 @@ export function useDimension(n: number): DimensionStore {
     }),
     untilCount: derived(gameState, ($state) => 10 - ($state.dimensions[n].owned % 10)),
     buy() {
-      gameState.update(($state) => {
-        if ($state.antimatter >= $state.dimensions[n].cost) {
-          $state.dimensions[n].owned++;
-          $state.antimatter -= $state.dimensions[n].cost;
-          if ($state.dimensions[n].owned >= 10) {
-            $state.dimensions[n + 1].unlocked = true;
-            $state.dimensions[n].cost = $state.dimensions[n].cost * 100;
-            $state.dimensions[n].multi = $state.dimensions[n].multi * 2;
-          }
-        }
-        return $state;
-      });
+      gameState.update(($state) => buyDimensions($state, n, 1));
     },
     buyUntil() {
-      gameState.update(($state) => {
-        const count = 10 - ($state.dimensions[n].owned % 10);
-        if ($state.antimatter >= $state.dimensions[n].cost * count) {
-          $state.dimensions[n].owned += count;
-          $state.antimatter -= $state.dimensions[n].cost;
-          if ($state.dimensions[n].owned >= 10) {
-            $state.dimensions[n + 1].unlocked = true;
-            $state.dimensions[n].cost = $state.dimensions[n].cost * 100;
-            $state.dimensions[n].multi = $state.dimensions[n].multi * 2;
-          }
-        }
-        return $state;
-      });
+      gameState.update(($state) => buyDimensions($state, n, 10 - ($state.dimensions[n].owned % 10)));
     },
   };
+}
+
+function buyDimensions($state: GameState, n: number, count: number): GameState {
+  if ($state.antimatter >= $state.dimensions[n].cost * count) {
+    $state.dimensions[n].owned += count;
+    $state.antimatter -= $state.dimensions[n].cost;
+    if ($state.dimensions[n].owned >= 10) {
+      $state.dimensions[n + 1].unlocked = true;
+      $state.dimensions[n].cost *= 100;
+      $state.dimensions[n].multi *= 2;
+    }
+  }
+  return $state;
 }
