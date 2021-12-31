@@ -3,10 +3,6 @@
   import { format } from '@/util/display-utils';
 
   $: formattedAntimatter = format($antimatter, 1);
-  $: {
-    console.log($antimatter);
-    console.log(formattedAntimatter);
-  }
 </script>
 
 <div>

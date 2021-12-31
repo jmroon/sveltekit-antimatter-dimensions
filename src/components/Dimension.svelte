@@ -14,10 +14,8 @@
   Unlocked
 {/if} -->
 
-<div
-  class="flex flex-row min-w-min font-bold text-gray-100 shadow-slate-300 shadow-lg select-none rounded-xl bg-slate-800"
->
-  <div class="flex flex-col flex-grow">
+<div class="flex flex-row font-bold text-gray-100 shadow-slate-300 shadow-lg select-none rounded-xl bg-slate-800 m-1">
+  <div class="flex flex-col mr-6">
     <!-- Header -->
     <div class="flex items-center justify-between pt-4 pl-4 space-x-3 flex-nowrap">
       <Fa icon={faCircleNotch} class="text-yellow-600" scale={1.5} spin={$dimension.owned >= 1} />
@@ -33,11 +31,12 @@
     </div>
   </div>
   <!-- Extra Info Div for larger screens -->
-  <div class="hidden md:flex mx-12 flex-col justify-center items-center whitespace-nowrap min-w-[2rem] w-[400px]">
-    <span>Optional content for larger screens.</span>
-    <span>A graph would be cool</span>
+  <div class="flex-grow">
+    <div class="hidden md:flex px-6 flex-col justify-center items-center whitespace-nowrap min-w-[2rem] w-full h-full">
+      <span>Optional content for larger screens.</span>
+      <span>A graph would be cool</span>
+    </div>
   </div>
-  <div class="md:hidden w-28" />
   <!-- Actions -->
   <div class="flex flex-col overflow-hidden font-bold align-middle bg-slate-700 rounded-r-xl">
     <!-- Buy One -->
