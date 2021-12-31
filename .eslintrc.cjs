@@ -7,10 +7,11 @@ module.exports = {
   overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
   settings: {
     'svelte3/typescript': () => require('typescript'),
+    'svelte3/ignore-styles': ({ lang }) => lang === 'scss',
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2019,
+    ecmaVersion: 2020,
   },
   env: {
     browser: true,
