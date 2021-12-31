@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { antimatter } from '@/stores/gameState';
+  import { antimatter } from '@/stores/game-state';
   import { format } from '@/util/display-utils';
 
   $: formattedAntimatter = format($antimatter, 1);

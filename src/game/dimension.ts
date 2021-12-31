@@ -1,4 +1,4 @@
-import type { GameState } from '@/stores/gameState';
+import type { GameState } from '@/stores/game-state';
 
 export interface Dimension {
   dimensionNumber: number;

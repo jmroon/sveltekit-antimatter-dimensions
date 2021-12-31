@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { gameState } from '@/stores/gameState';
+  import { gameState } from '@/stores/game-state';
   import Dimension from '@/components/Dimension.svelte';
 </script>
 

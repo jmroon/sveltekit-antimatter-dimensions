@@ -1,7 +1,7 @@
 <script lang="ts">
   import '@/app.css';
 
-  import { gameState } from '@/stores/gameState';
+  import { gameState } from '@/stores/game-state';
   import { prefetchRoutes } from '$app/navigation';
   import { browser } from '$app/env';
   import AntimatterDisplay from '@/components/AntimatterDisplay.svelte';
@@ -35,7 +35,7 @@
   loadRoutes();
 </script>
 
-<nav class="flex items-center p-5 text-xl text-center text-gray-100 justify-evenly bg-slate-800 drop-shadow-md">
+<nav class="flex items-center p-5 text-xl text-center text-gray-100 justify-between bg-slate-800 drop-shadow-md">
   <a href="/">Dimensions</a>
   <AntimatterDisplay />
   <a href="/options">Options</a>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useDimension } from '@/stores/gameState';
+  import { useDimension } from '@/stores/game-state';
   import Fa from 'svelte-fa';
   import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,13 +15,13 @@
 {/if} -->
 
 <div
-  class="flex flex-row w-[400px] font-bold text-gray-100 shadow-slate-300 shadow-lg select-none rounded-xl bg-slate-800"
+  class="flex flex-row min-w-min font-bold text-gray-100 shadow-slate-300 shadow-lg select-none rounded-xl bg-slate-800"
 >
   <div class="flex flex-col flex-grow">
     <!-- Header -->
-    <div class="flex items-center justify-between pt-4 pl-4 space-x-3">
+    <div class="flex items-center justify-between pt-4 pl-4 space-x-3 flex-nowrap">
       <Fa icon={faCircleNotch} class="text-yellow-600" scale={1.5} spin={$dimension.owned >= 1} />
-      <div class="flex-grow mr-auto text-white text-md">{$dimension.displayName}</div>
+      <div class="flex-grow mr-auto text-white text-md whitespace-nowrap">{$dimension.displayName}</div>
     </div>
     <!-- Content -->
     <div class="flex mt-3 text-sm">
@@ -32,6 +32,12 @@
       </div>
     </div>
   </div>
+  <!-- Extra Info Div for larger screens -->
+  <div class="hidden md:flex mx-12 flex-col justify-center items-center whitespace-nowrap min-w-[2rem] w-[400px]">
+    <span>Optional content for larger screens.</span>
+    <span>A graph would be cool</span>
+  </div>
+  <div class="md:hidden w-28" />
   <!-- Actions -->
   <div class="flex flex-col overflow-hidden font-bold align-middle bg-slate-700 rounded-r-xl">
     <!-- Buy One -->

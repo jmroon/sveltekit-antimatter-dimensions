@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex justify-center max-w-full">
-  <div class="max-w-6xl">
+  <div class="max-w-xs">
     <DimensionTable />
   </div>
 </div>
