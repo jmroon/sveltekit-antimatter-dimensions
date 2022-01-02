@@ -18,6 +18,6 @@
   <AntimatterDisplay />
   <a href="/options">Options</a>
 </nav>
-<div class="mx-auto h-max bg-slate-50">
+<div class="h-full w-full bg-slate-50">
   <slot />
 </div>
